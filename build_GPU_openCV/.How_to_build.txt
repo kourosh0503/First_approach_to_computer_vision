@@ -1,0 +1,36 @@
+#------------NOTICE------------
+
+After this CMake has to build in RELEASE mode.
+On VScode this can be done like this : https://stackoverflow.com/a/73329010 (If there is no status bar just follow the thread and you will find how to enable it)
+
+For the .exe to run,you either paste the dlls located in the bin folder into the executable folder or you add it to PATH. (the vc16 or 17 can change depending on the installation 
+-CPU :"<Prefix to pre-built OpenCV folder>\opencv4.13\build\x64\vc16\bin"
+-GPU :"<Prefix to built GPU OpenCV folder>\opencv4.13_GPU\build_cuda\install\x64\vc17\bin"
+
+#------------------------------
+
+1) Install Prerequisites
+
+-Visual Studio: Download Visual Studio (2019 or 2022) and install the "Desktop development with C++" workload.
+-CMake: Download and install the Windows x64 Installer from cmake.org (Make sure to check "Add CMake to the system PATH" during installation).
+-NVIDIA Tools: Download and install the CUDA Toolkit and cuDNN matching versions from the NVIDIA Developer website.
+-Download OpenCV version 4.13 from the OpenCV release page. Then look for the version with the same branch and tag in the OpenCV_contrib repo (branch : 4.x / tag 4.13). In the opencv folder you downloaded paste the opencv_contrib-4.13.0 folder (The name has to be the same as showed here)
+
+2) Merge cuDNN into CUDA
+
+-Go to your cuDNN installation path (e.g., C:\Program Files\NVIDIA\CUDNN\v9.x).
+Crucial: Do not just copy the top-level folders. Open include, then open the subfolder matching your CUDA version (e.g., 12.9). Copy the actual files inside it. Paste them directly into C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.9\include.
+-Repeat this deep copy-paste process for the other directories:
+ Copy the files inside cuDNN lib\12.9\x64 -> Paste into CUDA lib\x64
+ Copy the files inside cuDNN bin\12.9\x64 -> Paste into CUDA bin
+
+3) Execute the Build
+
+-Ensure Builder.bat is placed in the root of your OpenCV folder (right next to the sources and opencv_contrib folders).
+-Double-click Builder.bat.
+-Select your GPU architecture from the menu and let it run. (It takes 30-60 minutes).
+
+4) Link to your CMakeLists.txt
+
+-Once finished, point your C++ project to the newly generated install folder:
+set(OpenCV_DIR "C:/.../opencv4.13/build_cuda/install" CACHE PATH "Path to CUDA OpenCV build")
