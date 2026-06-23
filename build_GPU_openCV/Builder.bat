@@ -1,3 +1,6 @@
+::Written by Gemini due to lack of Batch knowledge
+::Based on https://opencv-windows.github.io/cuda-gpu.html
+
 @echo off
 setlocal enabledelayedexpansion
 
