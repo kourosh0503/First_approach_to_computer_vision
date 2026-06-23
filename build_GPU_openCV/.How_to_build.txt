@@ -6,6 +6,15 @@ On VScode this can be done like this : https://stackoverflow.com/a/73329010 (If 
 For the .exe to run,you either paste the dlls located in the bin folder into the executable folder or you add it to PATH. (the vc16 or 17 can change depending on the installation 
 -CPU :"<Prefix to pre-built OpenCV folder>\opencv4.13\build\x64\vc16\bin"
 -GPU :"<Prefix to built GPU OpenCV folder>\opencv4.13_GPU\build_cuda\install\x64\vc17\bin"
+Note that you do not necessarily need to separate the root folder for the GPU and CPU versions.
+You could just have a file tree like this one
+...
+    -> opencv4.13
+        ->build
+        ->source
+        ->opencv_contrib-4.13.0
+        ->build_cuda
+        ->...
 
 #------------------------------
 
@@ -14,7 +23,7 @@ For the .exe to run,you either paste the dlls located in the bin folder into the
 -Visual Studio: Download Visual Studio (2019 or 2022) and install the "Desktop development with C++" workload.
 -CMake: Download and install the Windows x64 Installer from cmake.org (Make sure to check "Add CMake to the system PATH" during installation).
 -NVIDIA Tools: Download and install the CUDA Toolkit and cuDNN matching versions from the NVIDIA Developer website.
--Download OpenCV version 4.13 from the OpenCV release page. Then look for the version with the same branch and tag in the OpenCV_contrib repo (branch : 4.x / tag 4.13). In the opencv folder you downloaded paste the opencv_contrib-4.13.0 folder (The name has to be the same as showed here)
+-Download OpenCV version 4.13 from the OpenCV release page. Then look for the version with the same branch and tag in the OpenCV_contrib repo (branch : 4.x / tag 4.13). In the opencv folder you downloaded paste the opencv_contrib-4.13.0 folder (The name has to be the same as showed here). You can delete the build folder to spare some space or keep it to have CPU and GPU openCV in the same folder.
 
 2) Merge cuDNN into CUDA
 
