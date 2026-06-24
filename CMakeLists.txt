@@ -13,6 +13,9 @@ if(USE_GPU)
 set(OpenCV_DIR "C:/Users/kouro/Documents/Prog/C_C++/_Libs/opencv4.13_GPU/build_cuda/install")
 endif()
 
+#Source files to compile
+file(GLOB_RECURSE sourcesfiles "src/chapter6.cpp")
+
 #----------------------------------------------------------------------------------------------
 
 project(
@@ -30,11 +33,6 @@ if(POLICY CMP0146)
 endif()
 set(CMAKE_WARN_DEPRECATED ON)
 #-----------------------------------------------------------------------------
-
-
-file(GLOB_RECURSE sourcesfiles 
-"src/chapter5.cpp"
-)
 
 add_executable(testOpenCV ${sourcesfiles})
 
